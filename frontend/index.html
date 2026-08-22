@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Runa AI - Sua Engenheira de Software Local</title>
+    <link rel="icon" href="assets/nexa-mark.svg" type="image/svg+xml" />
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+    <div class="app">
+        <!-- Sidebar -->
+        <aside class="sidebar" aria-label="Menu Lateral">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-mark" aria-hidden="true">R</span>
+                    <span class="logo-text">Runa <strong>AI</strong></span>
+                </div>
+                <button id="new-chat-btn" class="btn-primary" aria-label="Criar nova conversa">+ Nova conversa</button>
+            </div>
+
+            <div class="conversation-list" id="conversation-list" role="navigation" aria-label="Histórico de conversas">
+                <!-- conversas injetadas via JS -->
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="status-indicator" id="status-indicator" aria-live="polite">
+                    <span class="status-dot" id="status-dot"></span>
+                    <span id="status-text">Verificando modelo...</span>
+                </div>
+                <p class="privacy-note">
+                    🔒 A Runa AI só processa mensagens e arquivos que você enviar explicitamente aqui. Ela não acessa nada do seu computador.
+                </p>
+            </div>
+        </aside>
+
+        <!-- Área Principal do Chat -->
+        <main class="chat-area">
+            <header class="chat-header">
+                <button id="menu-btn" class="icon-btn menu-btn" type="button" aria-label="Abrir menu de conversas" aria-expanded="false" title="Abrir menu de conversas">☰</button>
+                <div class="chat-heading">
+                    <span class="eyebrow">workspace / conversa</span>
+                    <h1 id="chat-title">Nova conversa</h1>
+                </div>
+                <label class="model-picker" for="model-select">
+                    <span>Modelo</span>
+                    <select id="model-select" aria-label="Escolher modelo Ollama">
+                        <option value="">Carregando modelos...</option>
+                    </select>
+                </label>
+                <button id="export-btn" class="btn-secondary" title="Exportar blocos de código desta conversa" aria-label="Exportar códigos">
+          ⬇ Exportar
+        </button>
+            </header>
+
+            <div class="messages" id="messages" role="log" aria-live="polite">
+                <div class="empty-state" id="empty-state">
+                    <div class="empty-icon" aria-hidden="true">⚡</div>
+                    <h2>Bem-vindo à Runa AI</h2>
+                    <p>Sua engenheira de software para programação: escreva, corrija, revise e debugue código. Envie arquivos, projetos .zip ou screenshots de erro.</p>
+                </div>
+            </div>
+
+            <div class="attached-files" id="attached-files" aria-label="Arquivos anexados"></div>
+
+            <form class="composer" id="composer">
+                <button type="button" id="attach-btn" class="icon-btn" title="Anexar arquivo" aria-label="Anexar arquivo">📎</button>
+                <input type="file" id="file-input" multiple hidden accept=".c,.cpp,.h,.hpp,.cs,.py,.js,.ts,.jsx,.tsx,.java,.rs,.go,.php,.html,.css,.sql,.json,.xml,.yaml,.yml,.md,.txt,.log,.zip,.png,.jpg,.jpeg,.webp" />
+                <textarea id="message-input" placeholder="Pergunte algo, cole um erro ou peça uma revisão de código..." rows="1" aria-label="Digite sua mensagem"></textarea>
+                <button type="submit" id="send-btn" class="btn-primary" aria-label="Enviar mensagem">Enviar</button>
+            </form>
+            <div class="drop-overlay" id="drop-overlay" aria-hidden="true">Solte os arquivos aqui</div>
+        </main>
+        <button id="sidebar-backdrop" class="sidebar-backdrop" type="button" aria-label="Fechar menu de conversas"></button>
+    </div>
+
+    <!-- Scripts Externos -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

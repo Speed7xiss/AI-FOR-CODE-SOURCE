@@ -1,0 +1,26 @@
+# Segredos — NUNCA commitar
+.env
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Banco de dados local
+*.db
+*.db-journal
+
+# Uploads de usuário
+storage/uploads/
+test_storage/
+
+# Editor / SO
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Node (se algum dia entrar build step no frontend)
+node_modules/

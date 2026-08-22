@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Runa AI">
+  <defs>
+    <linearGradient id="mark" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7c5cff"/>
+      <stop offset="1" stop-color="#23d3c4"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#12161d"/>
+  <text x="32" y="45" font-family="'JetBrains Mono', ui-monospace, monospace" font-weight="700" font-size="34" text-anchor="middle" fill="url(#mark)">R</text>
+</svg>

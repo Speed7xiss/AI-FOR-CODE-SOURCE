@@ -65,6 +65,15 @@ function renderMarkdown(text) {
 }
 
 async function api(path, options = {}) {
+    const defaultHeaders = {
+        "ngrok-skip-browser-warning": "true",
+    };
+
+    options.headers = {
+        ...defaultHeaders,
+        ...(options.headers || {}),
+    };
+
     const resp = await fetch(`${API_BASE_URL}${path}`, options);
     if (!resp.ok) {
         let detail = "Erro desconhecido.";
@@ -316,7 +325,12 @@ function autoResize() {
 function extractCodeBlocks() {
     const blocks = [];
     document.querySelectorAll(".message.assistant .bubble pre code").forEach((code, i) => {
-        const lang = [...code.classList].find((c) => c.startsWith("language-"))?.replace("language-", "") || "txt";
+        // Encontra a classe que começa com "language-"
+        const foundClass = [...code.classList].find((c) => c.startsWith("language-"));
+
+        // Se encontrou, tira o "language-". Se não, usa "txt".
+        const lang = foundClass ? foundClass.replace("language-", "") : "txt";
+
         blocks.push({ name: `bloco_${i + 1}.${lang}`, content: code.textContent });
     });
     return blocks;
